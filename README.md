@@ -1,29 +1,19 @@
-# op
+# Excel plugin
 
-## Project setup
-```
-yarn install
-```
+## Quickstart
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
+```sh
+git clone git@github.com:SimonSiefke/proplant-report-generator.git &&
+npm install &&
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
+## ❗ Important: Generate ssl certificate
+
+For local development you need to generate a ssl certificate:
+
+```sh
+openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This will generate a `cert.pem` file and a `key.pem` file.
