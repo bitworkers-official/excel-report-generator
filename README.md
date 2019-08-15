@@ -12,6 +12,7 @@
 
 ```sh
 git clone git@github.com:bitworkers-official/excel-report-generator.git &&
+cd excel-report-generator &&
 npm install &&
 npm run dev
 ```
