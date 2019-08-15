@@ -15,25 +15,32 @@
 
     <form>
       <fieldset :disabled="busy">
-        <label for="period" class="ms-font-m">Period</label>
-        <select id="period" v-model="selectedPeriod" name="period">
-          <option
-            v-for="period in periods"
-            :key="period.toString()"
-            :value="period"
-          >
-            {{ formatPeriod(period) }}
-          </option>
-        </select>
-        <label for="region" class="ms-font-m">Region</label>
-        <select id="region" name="region" v-model="selectedRegion">
-          <option v-for="region in regions" :key="region.label" :value="region">
-            {{ region.label }}
-          </option>
-        </select>
-        <button type="submit" @click.prevent="run">
-          <span class="ms-font-m">run</span>
-        </button>
+        <!-- need to use this div because of chrome bug with css grid on fieldset elements -->
+        <div class="fieldset__content">
+          <label for="period" class="ms-font-m">Period</label>
+          <select id="period" v-model="selectedPeriod" name="period">
+            <option
+              v-for="period in periods"
+              :key="period.toString()"
+              :value="period"
+            >
+              {{ formatPeriod(period) }}
+            </option>
+          </select>
+          <label for="region" class="ms-font-m">Region</label>
+          <select id="region" name="region" v-model="selectedRegion">
+            <option
+              v-for="region in regions"
+              :key="region.label"
+              :value="region"
+            >
+              {{ region.label }}
+            </option>
+          </select>
+          <button type="submit" @click.prevent="run">
+            <span class="ms-font-m">run</span>
+          </button>
+        </div>
       </fieldset>
     </form>
   </div>
@@ -127,7 +134,7 @@ fieldset
   border none
   padding 0
 
-fieldset
+.fieldset__content
   align-items center
   display grid
   grid-template-columns min-content min-content
