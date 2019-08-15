@@ -14,6 +14,7 @@ import {
 export function getLabourDays({ period, region }) {
   const year = period.getFullYear();
   const month = period.getMonth();
+  // see https://stackoverflow.com/questions/13571700/get-first-and-last-date-of-current-month-with-javascript-or-jquery
   const firstDayOfMonth = new Date(year, month, 1);
   const lastDayOfMonth = new Date(year, month + 1, 0);
   const daysInMonth = eachDayOfInterval({
