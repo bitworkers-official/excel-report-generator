@@ -10,27 +10,27 @@
     </section>
 
     <form>
-      <label for="period">Period</label>
-      <select id="period" v-model="selectedPeriod" name="period">
-        <option
-          v-for="period in periods"
-          :key="period.toString()"
-          :value="period"
-        >
-          {{ formatPeriod(period) }}
-        </option>
-      </select>
-      <br />
-      <label for="region">Region</label>
-      <select id="region" name="region" v-model="selectedRegion">
-        <option v-for="region in regions" :key="region.label" :value="region">
-          {{ region.label }}
-        </option>
-      </select>
-      <br />
-      <button type="submit" @click.prevent="run">
-        <span>run</span>
-      </button>
+      <fieldset :disabled="busy">
+        <label for="period">Period</label>
+        <select id="period" v-model="selectedPeriod" name="period">
+          <option
+            v-for="period in periods"
+            :key="period.toString()"
+            :value="period"
+          >
+            {{ formatPeriod(period) }}
+          </option>
+        </select>
+        <label for="region">Region</label>
+        <select id="region" name="region" v-model="selectedRegion">
+          <option v-for="region in regions" :key="region.label" :value="region">
+            {{ region.label }}
+          </option>
+        </select>
+        <button type="submit" @click.prevent="run">
+          <span>run</span>
+        </button>
+      </fieldset>
     </form>
   </div>
 </template>
@@ -65,6 +65,7 @@ export default {
   name: "App",
   data() {
     return {
+      busy: false,
       error: "",
       periods,
       regions,
@@ -75,6 +76,7 @@ export default {
   methods: {
     formatPeriod,
     async run() {
+      this.busy = true;
       try {
         await generateReport({
           period: this.selectedPeriod,
@@ -82,6 +84,8 @@ export default {
         });
       } catch (error) {
         this.error = error;
+      } finally {
+        this.busy = false;
       }
     }
   }
@@ -89,6 +93,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+fieldset{
+  border:none
+}
+
 .error
   color red
   display flex
@@ -104,4 +112,9 @@ export default {
   background transparent
   border none
   color currentColor
+
+fieldset{
+  display:grid
+  grid-template-columns: auto auto
+}
 </style>
