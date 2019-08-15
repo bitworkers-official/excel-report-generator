@@ -93,9 +93,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-fieldset{
-  border:none
-}
+button::-moz-focus-inner
+  border none
+
+:global(body)
+  font-family Arial, Helvetica, sans-serif
 
 .error
   color red
@@ -113,8 +115,27 @@ fieldset{
   border none
   color currentColor
 
-fieldset{
-  display:grid
-  grid-template-columns: auto auto
-}
+fieldset
+  border none
+
+fieldset
+  align-items center
+  display grid
+  grid-template-columns min-content min-content
+
+label
+  margin-right 0.5rem
+
+button[type='submit']
+  background #217346
+  border none
+  border-radius 5px
+  color white
+  cursor pointer
+  margin-top 1rem
+  outline none
+  padding 0.5rem 1rem
+
+  &:hover, &:focus
+    background #2d9c5f
 </style>
