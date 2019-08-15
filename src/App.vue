@@ -1,26 +1,112 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <section v-if="error" class="error">
+      <p class="error__message">
+        {{ error }}
+      </p>
+      <button class="error__close" aria-label="close error" @click="error = ''">
+        x
+      </button>
+    </section>
+
+    <form>
+      <label for="period">Period</label>
+      <select id="period" v-model="selectedPeriod" name="period">
+        <option
+          v-for="period in periods"
+          :key="period.toString()"
+          :value="period"
+        >
+          {{ formatPeriod(period) }}
+        </option>
+      </select>
+      <br />
+      <label for="region">Region</label>
+      <select id="region" name="region">
+        <option v-for="region in regions" :key="region" :value="region">
+          {{ region }}
+        </option>
+      </select>
+      <br />
+      <button type="submit" @click.prevent="run">
+        <span>run</span>
+      </button>
+    </form>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { generateReport } from "./generateReport";
+import { addMonths, subMonths, format } from "date-fns";
+
+function computePeriods() {
+  let pastMonths = 3;
+  let futureMonths = 2;
+  const now = new Date();
+  let dates = [];
+  for (let i = pastMonths; i >= 1; i--) {
+    dates.push(subMonths(now, i));
+  }
+  dates.push(now);
+  for (let j = 1; j <= futureMonths; j++) {
+    dates.push(addMonths(now, j));
+  }
+  return dates;
+}
+
+function formatPeriod(date) {
+  return format(date, "MMMM yyyy");
+}
+
+const periods = computePeriods();
+const regions = [
+  "north rhine-westphalia",
+  "bavaria",
+  "lower saxony",
+  "slovakia"
+];
 
 export default {
-  name: "app",
-  components: {
-    HelloWorld
+  name: "App",
+  data() {
+    return {
+      error: "",
+      periods,
+      regions,
+      selectedPeriod: periods[0],
+      selectedRegion: regions[0]
+    };
+  },
+  methods: {
+    formatPeriod,
+    async run() {
+      try {
+        await generateReport({
+          period: this.selectedPeriod,
+          region: this.selectedRegion
+        });
+      } catch (error) {
+        this.error = error;
+      }
+    }
   }
 };
 </script>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+
+<style lang="stylus" scoped>
+.error
+  color red
+  display flex
+
+.error
+  border 1px solid currentColor
+  font-size 150%
+
+.error__message
+  flex 1
+
+.error__close
+  background transparent
+  border none
+  color currentColor
 </style>
