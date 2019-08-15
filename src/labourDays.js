@@ -1,5 +1,11 @@
 import Holidays from "date-holidays";
-import { eachDayOfInterval, isSunday, isSaturday } from "date-fns";
+import {
+  eachDayOfInterval,
+  isSunday,
+  isSaturday,
+  isSameDay,
+  isSameMonth
+} from "date-fns";
 
 /**
  *
@@ -16,11 +22,18 @@ export function getLabourDays({ period, region }) {
   });
 
   // @ts-ignore
-  const holidays = new Holidays(...region);
-  return daysInMonth.filter(day => {
-    const holiday = holidays.isHoliday(day);
-    const isBankOrPublicHoliday =
-      holiday.type === "bank" || holiday.type === "public";
-    return !isBankOrPublicHoliday && !isSunday(day) && !isSaturday(day);
-  });
+  const holidays = new Holidays(...region)
+    .getHolidays(year)
+    .filter(holiday => isSameMonth(period, holiday.start))
+    .filter(holiday => holiday.type === "bank" || holiday.type === "public")
+    .map(holiday => holiday.start);
+
+  return daysInMonth.filter(
+    day =>
+      !isSunday(day) &&
+      !isSaturday(day) &&
+      !holidays.some(holiday => isSameDay(day, holiday))
+  );
 }
+
+// getLabourDays({ period: new Date("2019-12-01"), region: ["DE", "BY"] });

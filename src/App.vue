@@ -22,7 +22,7 @@
       </select>
       <br />
       <label for="region">Region</label>
-      <select id="region" name="region">
+      <select id="region" name="region" v-model="selectedRegion">
         <option v-for="region in regions" :key="region.label" :value="region">
           {{ region.label }}
         </option>
