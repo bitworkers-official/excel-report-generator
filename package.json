@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build && node scripts/build.js",
-    "build:container": "vue-cli-service build && cross-env URL=https://wa-mvi-excel-addins-container.azurewebsites.net node scripts/build.js",
+    "build": "npm run bundle-holidays && vue-cli-service build && node scripts/build.js",
+    "build:container": "npm run bundle-holidays && vue-cli-service build && cross-env URL=https://wa-mvi-excel-addins-container.azurewebsites.net node scripts/build.js",
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service test:unit"
+    "test": "vue-cli-service test:unit",
+    "bundle-holidays": "holidays2json --pick US,DE,SK,CN --min"
   },
   "dependencies": {
     "core-js": "^2.6.5",

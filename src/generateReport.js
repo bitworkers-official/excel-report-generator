@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { getLabourDays } from "./labourDays";
 
 /**
  * formats address from 'sheet1!A1' to 'A1
@@ -67,6 +66,7 @@ function writeToExcel(
  * Generates the report and writes it into the excel sheet
  */
 export async function generateReport({ period, region }) {
+  const { getLabourDays } = await import("./labourDays");
   console.log("period:", period, "region:", region);
   const marginLeft = 2; // No Of Columns left of 1st Total column
   const marginRight = 1; // No Of Columns on the Right of last Total within jx
