@@ -2,6 +2,7 @@ import { getLabourDays } from "../../src/labourDays";
 import { format } from "date-fns";
 
 const formatDay = day => format(day, "yyyy-MM-dd");
+
 test("labour days in germany", () => {
   const labourDays = getLabourDays({
     period: new Date("2019-12-01"),
