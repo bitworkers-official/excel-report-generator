@@ -4,14 +4,18 @@
       <p class="error__message">
         {{ error }}
       </p>
-      <button class="error__close" aria-label="close error" @click="error = ''">
+      <button
+        class="error__close ms-font-m"
+        aria-label="close error"
+        @click="error = ''"
+      >
         x
       </button>
     </section>
 
     <form>
       <fieldset :disabled="busy">
-        <label for="period">Period</label>
+        <label for="period" class="ms-font-m">Period</label>
         <select id="period" v-model="selectedPeriod" name="period">
           <option
             v-for="period in periods"
@@ -21,14 +25,14 @@
             {{ formatPeriod(period) }}
           </option>
         </select>
-        <label for="region">Region</label>
+        <label for="region" class="ms-font-m">Region</label>
         <select id="region" name="region" v-model="selectedRegion">
           <option v-for="region in regions" :key="region.label" :value="region">
             {{ region.label }}
           </option>
         </select>
         <button type="submit" @click.prevent="run">
-          <span>run</span>
+          <span class="ms-font-m">run</span>
         </button>
       </fieldset>
     </form>
@@ -93,11 +97,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+:global(body)
+  font-family Arial, Helvetica, sans-serif
+
 button::-moz-focus-inner
   border none
 
-:global(body)
-  font-family Arial, Helvetica, sans-serif
+#app
+  padding 1.5rem
+  --theme-color #217346
 
 .error
   color red
@@ -117,6 +125,7 @@ button::-moz-focus-inner
 
 fieldset
   border none
+  padding 0
 
 fieldset
   align-items center
@@ -127,7 +136,7 @@ label
   margin-right 0.5rem
 
 button[type='submit']
-  background #217346
+  background var(--theme-color)
   border none
   border-radius 5px
   color white
@@ -138,4 +147,7 @@ button[type='submit']
 
   &:hover, &:focus
     background #2d9c5f
+
+fieldset[disabled] button[type='submit']
+  background lightgray
 </style>
