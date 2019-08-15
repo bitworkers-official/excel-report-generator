@@ -1,3 +1,7 @@
 module.exports = {
-  lintOnSave: false
+  lintOnSave: false,
+  devServer: {
+    https: true,
+    port: 3000
+  }
 };

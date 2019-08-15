@@ -1,0 +1,70 @@
+[
+  {
+    "label": "Brandenburg",
+    "code": ["DE", "BB"]
+  },
+  {
+    "label": "Berlin",
+    "code": ["DE", "BE"]
+  },
+  {
+    "label": "BW",
+    "code": ["DE", "BW"]
+  },
+  {
+    "label": "Bayern",
+    "code": ["DE", "BY"]
+  },
+  {
+    "label": "Bremen",
+    "code": ["DE", "HB"]
+  },
+  {
+    "label": "Hessen",
+    "code": ["DE", "HE"]
+  },
+  {
+    "label": "Hamburg",
+    "code": ["DE", "HH"]
+  },
+  {
+    "label": "Mecklenburg Vorpommern",
+    "code": ["DE", "MV"]
+  },
+  {
+    "label": "Niedersachsen",
+    "code": ["DE", "NI"]
+  },
+  {
+    "label": "NRW",
+    "code": ["DE", "NW"]
+  },
+  {
+    "label": "Rheinland-Pfalz",
+    "code": ["DE", "RP"]
+  },
+  {
+    "label": "Schleswig-Holstein",
+    "code": ["DE", "SH"]
+  },
+  {
+    "label": "Saarland",
+    "code": ["DE", "SL"]
+  },
+  {
+    "label": "Sachsen",
+    "code": ["DE", "SN"]
+  },
+  {
+    "label": "Sachsen-Anhalt",
+    "code": ["DE", "ST"]
+  },
+  {
+    "label": "Thüringen",
+    "code": ["DE", "TH"]
+  },
+  {
+    "label": "Slovakia",
+    "code": ["SK"]
+  }
+]
