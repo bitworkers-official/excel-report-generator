@@ -1,34 +1,23 @@
-# excel-report-generator
+# Excel Report Generator
 
-## Project setup
-```
-yarn install
-```
+![](./demo-image.png)
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## Demo
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+👉 [https://sleepy-jennings-39e0ef.netlify.com/](https://sleepy-jennings-39e0ef.netlify.com/)
 
-### Run your tests
-```
-yarn run test
+(You need to load the [`manifest.xml`](https://sleepy-jennings-39e0ef.netlify.com/manifest.xml) file into excel to try it out)
+
+## Quickstart 🚀
+
+```sh
+git clone git@github.com:bitworkers-official/excel-report-generator.git &&
+npm install &&
+npm run dev
 ```
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## ❗ Important: Https on Localhost
 
-### Run your unit tests
-```
-yarn run test:unit
-```
+For local development you need trust the self signed certificate:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Go to `https://localhost:3000` and click Advanced and accept the risk
