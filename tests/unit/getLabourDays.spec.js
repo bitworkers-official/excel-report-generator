@@ -1,6 +1,5 @@
 import { getLabourDays } from "../../src/labourDays";
 import { format } from "date-fns";
-import "volkswagen";
 
 const formatDay = day => format(day, "yyyy-MM-dd");
 
