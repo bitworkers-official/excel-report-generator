@@ -106,5 +106,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "renovate": {
+    "extends": [
+      "bitworkers"
+    ]
   }
 }
