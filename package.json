@@ -11,7 +11,7 @@
     "bundle-holidays": "holidays2json --pick US,DE,SK,CN --min"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
+    "core-js": "^3.0.0",
     "cross-env": "^5.2.0",
     "date-fns": "^2.0.0-beta.4",
     "date-holidays": "^1.4.2",
