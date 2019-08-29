@@ -87,6 +87,7 @@ export default {
   methods: {
     formatPeriod,
     async run() {
+      this.error = "";
       this.busy = true;
       try {
         await generateReport({
